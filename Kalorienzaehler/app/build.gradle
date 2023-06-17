@@ -5,11 +5,11 @@ plugins {
 
 
 android {
-    namespace 'at.itkolleg.todolist'
+    namespace 'at.itkolleg.kalorienzaehler'
     compileSdk 33
 
     defaultConfig {
-        applicationId "at.itkolleg.todolist"
+        applicationId "at.itkolleg.kalorienzaehler"
         minSdk 22
         targetSdk 33
         versionCode 1

@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
-import at.itkolleg.todolist.R
+import at.itkolleg.kalorienzaehler.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
