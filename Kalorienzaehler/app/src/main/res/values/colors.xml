@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="headerBackground">#bfefff</color>
+    <color name="tvFields">	#ededed</color>
+    <color name="tvFields1">#f5f5f5</color>
 </resources>

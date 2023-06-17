@@ -4,15 +4,233 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="at.itkolleg.kalorienzaehler.MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/headerBackground"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textSize="35sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Ein EditText zum Eingeben des Todo-Titels -->
+    <TextView
+        android:id="@+id/tvDaily"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:text="@string/tvDaily"
+        android:background="@color/tvFields"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        tools:layout_editor_absoluteX="37dp" />
+
+    <TextView
+        android:id="@+id/tvMeals"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:textSize="25sp"
+        android:text="@string/tvMeals"
+        android:background="@color/tvFields"
+        app:layout_constraintTop_toBottomOf="@+id/tblDailys" />
+
+    <TextView
+        android:id="@+id/tvMeal"
+        android:layout_width="0dp"
+        android:layout_height="37dp"
+        android:background="@color/tvFields1"
+        android:text="@string/tvMeal"
+        android:textSize="20sp"
+        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@+id/tvDelete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMeals" />
+
+    <TextView
+        android:id="@+id/tvDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:background="@color/tvFields1"
+        android:text="@string/tvDelete"
+        android:gravity="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMeals" />
+
+
+    <TableLayout
+        android:id="@+id/tblDailys"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        app:layout_constraintTop_toBottomOf="@id/tvDaily">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:text="@string/tvKcal1"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:layout_column="1"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:layout_column="1"
+                android:layout_weight="2" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:text="@string/tvFat"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:layout_column="1"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:layout_column="1"
+                android:layout_weight="2" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:text="@string/tvProtein"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:layout_column="1"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:layout_column="1"
+                android:layout_weight="2" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <TextView
+                android:text="@string/tvSugar"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:layout_column="1"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:layout_column="1"
+                android:layout_weight="2" />
+
+        </TableRow>
+
+    </TableLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTodoItems"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/etMeal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMeal" />
+
+    <EditText
+        android:id="@+id/etMeal"
+        android:layout_width="0dp"
+        android:layout_height="49dp"
+        android:hint="@string/etMeal"
+        app:layout_constraintBottom_toTopOf="@+id/etProtein"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/etSugar"
+        android:layout_width="0dp"
+        android:layout_height="49dp"
+        android:hint="@string/etSugar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnAdd"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <EditText
+        android:id="@+id/etProtein"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/etProtein"
+        app:layout_constraintBottom_toTopOf="@+id/btnAdd"
+        app:layout_constraintEnd_toStartOf="@+id/etFat" />
+
+    <EditText
+        android:id="@+id/etKcal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/etKcal"
+        app:layout_constraintBottom_toTopOf="@+id/btnAdd"
+        app:layout_constraintEnd_toStartOf="@+id/etProtein"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/etFat"
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/etFat"
+        app:layout_constraintBottom_toTopOf="@+id/btnAdd"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/btnAdd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnDelete" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/btnDelete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

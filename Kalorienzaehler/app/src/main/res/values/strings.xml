@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">Kalorienzaehler</string>
+    <string name="app_name">Kalorienzähler 1.0</string>
+    <string name="btnAdd">   Hinzufügen   </string>
+    <string name="btnDelete">   Löschen   </string>
+    <string name="etKcal">Kcal</string>
+    <string name="etFat">Fettgehalt</string>
+    <string name="etProtein">Proteine</string>
+    <string name="etSugar">Zucker</string>
+    <string name="tvKcal1">Kcal:</string>
+    <string name="tvFat">Fettgehalt:</string>
+    <string name="tvProtein">Proteine:</string>
+    <string name="tvSugar">Zucker:</string>
+    <string name="etMeal">Bezeichnug Mahlzeit</string>
+    <string name="tvKcal">   Kcal:</string>
+    <string name="tvDaily">     Tägliche Werte</string>
+    <string name="tvMeals">     Gegessene Mahlzeiten</string>
+    <string name="tvDelete">   Löschen   </string>
+    <string name="tvMeal">Mahlzeit</string>
 </resources>
