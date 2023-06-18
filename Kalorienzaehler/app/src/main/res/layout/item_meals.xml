@@ -9,7 +9,7 @@
 
     <!-- Ein TextView zur Anzeige des Titels eines Todo. -->
     <TextView
-        android:id="@+id/tvTodoTitle"
+        android:id="@+id/tvMealTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Example"

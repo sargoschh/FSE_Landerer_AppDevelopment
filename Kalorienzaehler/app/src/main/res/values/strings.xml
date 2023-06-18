@@ -16,4 +16,6 @@
     <string name="tvMeals">     Gegessene Mahlzeiten</string>
     <string name="tvDelete">   Löschen   </string>
     <string name="tvMeal">Mahlzeit</string>
+    <string name="meal_details">%1$s, %2$d Kcal, %3$d Fettgehalt, %4$d Proteine, %5$d Zucker</string>
+
 </resources>

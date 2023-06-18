@@ -24,6 +24,7 @@
         android:layout_height="37dp"
         android:text="@string/tvDaily"
         android:background="@color/tvFields"
+        android:paddingLeft="20dp"
         android:textSize="25sp"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle"
         tools:layout_editor_absoluteX="37dp" />
@@ -34,6 +35,7 @@
         android:layout_height="37dp"
         android:textSize="25sp"
         android:text="@string/tvMeals"
+        android:paddingLeft="20dp"
         android:background="@color/tvFields"
         app:layout_constraintTop_toBottomOf="@+id/tblDailys" />
 
@@ -56,6 +58,8 @@
         android:background="@color/tvFields1"
         android:text="@string/tvDelete"
         android:gravity="center"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMeals" />
@@ -81,6 +85,7 @@
                 android:layout_weight="1" />
 
             <TextView
+                android:id="@+id/tvTblKcal"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:gravity="center"
@@ -104,6 +109,7 @@
                 android:layout_weight="1" />
 
             <TextView
+                android:id="@+id/tvTblFat"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:textSize="18sp"
@@ -127,6 +133,7 @@
                 android:layout_weight="1" />
 
             <TextView
+                android:id="@+id/tvTblPro"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:textSize="18sp"
@@ -150,6 +157,7 @@
                 android:layout_weight="1" />
 
             <TextView
+                android:id="@+id/tvTblSug"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:textSize="18sp"
