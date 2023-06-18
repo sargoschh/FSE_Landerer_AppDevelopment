@@ -34,8 +34,25 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnAdd.setOnClickListener {
             val mealTitle = binding.etMeal.text.toString()
-            val mealKcal = binding.etKcal.text.toString()
+            val mealKcal = binding.etKcal.text.toString().toIntOrNull()
+            val mealFat = binding.etFat.text.toString().toDoubleOrNull()
+            val mealPro = binding.etProtein.text.toString().toDoubleOrNull()
+            val mealSug = binding.etSugar.text.toString().toDoubleOrNull()
 
+            if(mealTitle.isNotEmpty() && mealKcal != null && mealFat != null && mealPro != null && mealSug != null) {
+                val meal = Meal(mealTitle, mealKcal, mealFat, mealPro, mealSug)
+                mealAdapter.addMeal(meal)
+
+                binding.etMeal.text.clear()
+                binding.etKcal.text.clear()
+                binding.etFat.text.clear()
+                binding.etProtein.text.clear()
+                binding.etSugar.text.clear()
+            }
+        }
+
+        binding.btnDelete.setOnClickListener {
+            mealAdapter.deleteWrongMeals()
         }
 
         // Weitere Initialisierungen und Funktionen...
