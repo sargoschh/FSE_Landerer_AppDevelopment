@@ -11,17 +11,20 @@ import at.itkolleg.kalorienzaehler.databinding.ItemMealsBinding
 
 class MealAdapter(private val meals: MutableList<Meal>, private var daily: Daily, private val tblDailys: TableLayout) : RecyclerView.Adapter<MealAdapter.MealViewHolder> () {
 
-    class MealViewHolder(val binding: ItemMealsBinding, val tvTblKcal: TextView, val tvTblFat: TextView, val tvTblProtein: TextView, val tvTblSugar: TextView) : RecyclerView.ViewHolder(binding.root)
+    class MealViewHolder(val binding: ItemMealsBinding) : RecyclerView.ViewHolder(binding.root) {
+        val tvTblKcal: TextView = binding.root.findViewById(R.id.tvTblKcal)
+        val tvTblFat: TextView = binding.root.findViewById(R.id.tvTblFat)
+        val tvTblProtein: TextView = binding.root.findViewById(R.id.tvTblPro)
+        val tvTblSugar: TextView = binding.root.findViewById(R.id.tvTblSug)
+    }
+
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealViewHolder {
         val binding = ItemMealsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        val tvTblKcal = binding.root.findViewById<TextView>(R.id.tvTblKcal)
-        val tvTblFat = binding.root.findViewById<TextView>(R.id.tvTblFat)
-        val tvTblProtein = binding.root.findViewById<TextView>(R.id.tvTblPro)
-        val tvTblSugar = binding.root.findViewById<TextView>(R.id.tvTblSug)
 
-        return MealViewHolder(binding, tvTblKcal, tvTblFat, tvTblProtein, tvTblSugar)
+        return MealViewHolder(binding)
     }
 
 
@@ -33,6 +36,7 @@ class MealAdapter(private val meals: MutableList<Meal>, private var daily: Daily
         daily.sugar += meal.sugar
 
         notifyItemInserted(meals.size - 1)
+        updateTable()
     }
 
     fun deleteWrongMeals() {
@@ -48,6 +52,14 @@ class MealAdapter(private val meals: MutableList<Meal>, private var daily: Daily
             }
         }
         notifyDataSetChanged()
+        updateTable()
+    }
+    private fun updateTable() {
+        // Aktualisiere die Werte in der Tabelle
+        tblDailys.findViewById<TextView>(R.id.tvTblKcal).text = daily.kcal.toString()
+        tblDailys.findViewById<TextView>(R.id.tvTblFat).text = daily.fat.toString()
+        tblDailys.findViewById<TextView>(R.id.tvTblPro).text = daily.protein.toString()
+        tblDailys.findViewById<TextView>(R.id.tvTblSug).text = daily.sugar.toString()
     }
 
 
@@ -75,10 +87,10 @@ class MealAdapter(private val meals: MutableList<Meal>, private var daily: Daily
 
         holder.binding.cbDone.isChecked = currentTodo.isChecked
 
-        holder.tvTblKcal.text = daily.kcal.toString()
-        holder.tvTblFat.text = daily.fat.toString()
-        holder.tvTblProtein.text = daily.protein.toString()
-        holder.tvTblSugar.text = daily.sugar.toString()
+        holder.tvTblKcal.text = "Kcal: " + currentTodo.kcal
+        holder.tvTblFat.text = "Fat: " + currentTodo.fat
+        holder.tvTblProtein.text = "Protein: " + currentTodo.protein
+        holder.tvTblSugar.text = "Sugar: " + currentTodo.sugar
 
         holder.binding.cbDone.setOnCheckedChangeListener { _, isChecked ->
             // Wenn der Checked-Status geändert wird, aktualisiert die Funktion den Durchstreichungsstatus des Texts und den isChecked-Wert des aktuellen Todos.
