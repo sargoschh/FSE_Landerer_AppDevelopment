@@ -75,10 +75,16 @@ class MealAdapter(private val meals: MutableList<Meal>, private var daily: Daily
 
         holder.binding.cbDone.isChecked = currentTodo.isChecked
 
-        holder.tvTblKcal.text = currentTodo.kcal.toString()
-        holder.tvTblFat.text = currentTodo.fat.toString()
-        holder.tvTblProtein.text = currentTodo.protein.toString()
-        holder.tvTblSugar.text = currentTodo.sugar.toString()
+        holder.tvTblKcal.text = daily.kcal.toString()
+        holder.tvTblFat.text = daily.fat.toString()
+        holder.tvTblProtein.text = daily.protein.toString()
+        holder.tvTblSugar.text = daily.sugar.toString()
+
+        holder.binding.cbDone.setOnCheckedChangeListener { _, isChecked ->
+            // Wenn der Checked-Status geändert wird, aktualisiert die Funktion den Durchstreichungsstatus des Texts und den isChecked-Wert des aktuellen Todos.
+            toggleStrikeThrough(holder.binding.tvMealTitle, isChecked)
+            currentTodo.isChecked = !currentTodo.isChecked
+        }
     }
 
 
