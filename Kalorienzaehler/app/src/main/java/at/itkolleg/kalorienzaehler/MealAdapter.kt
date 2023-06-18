@@ -2,37 +2,34 @@ package at.itkolleg.kalorienzaehler
 
 import android.graphics.Paint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
+import android.widget.LinearLayout
 import android.widget.TableLayout
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import at.itkolleg.kalorienzaehler.Daily
+import at.itkolleg.kalorienzaehler.Meal
+import at.itkolleg.kalorienzaehler.R
 import at.itkolleg.kalorienzaehler.databinding.ItemMealsBinding
-import at.itkolleg.kalorienzaehler.databinding.ItemTablesBinding
 
-class MealAdapter(private val meals: MutableList<Meal>, private var daily: Daily, private val tblDailys: TableLayout) : RecyclerView.Adapter<MealAdapter.MealViewHolder>() {
+class MealAdapter(
+    private val meals: MutableList<Meal>,
+    private var daily: Daily,
+    private val tableLayout: TableLayout
+) : RecyclerView.Adapter<MealAdapter.MealViewHolder>() {
 
-    class MealViewHolder(val binding: ItemMealsBinding, val tableLayout: TableLayout) : RecyclerView.ViewHolder(binding.root) {
-        val tvMealTitle: TextView = binding.tvMealTitle
-        val cbDone: CheckBox = binding.cbDone
-        val tvTblKcal: TextView = tableLayout.findViewById(R.id.tvTblKcal)
-        val tvTblFat: TextView = tableLayout.findViewById(R.id.tvTblFat)
-        val tvTblProtein: TextView = tableLayout.findViewById(R.id.tvTblPro)
-        val tvTblSugar: TextView = tableLayout.findViewById(R.id.tvTblSug)
+    class MealViewHolder(val binding: ItemMealsBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(meal: Meal) {
+            binding.tvMealTitle.text = meal.title
+            binding.cbDone.isChecked = meal.isChecked
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemMealsBinding.inflate(inflater, parent, false)
-        val tableLayoutBinding = ItemTablesBinding.inflate(inflater, parent, false)
-        val clItem = tableLayoutBinding.root as ConstraintLayout
-
-        val tableLayout = clItem.findViewById<TableLayout>(R.id.tblDailys)
-
-        binding.root.addView(clItem)
-
-        return MealViewHolder(binding, tableLayout)
+        return MealViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MealViewHolder, position: Int) {
@@ -53,11 +50,34 @@ class MealAdapter(private val meals: MutableList<Meal>, private var daily: Daily
         holder.binding.cbDone.setOnCheckedChangeListener { _, isChecked ->
             toggleStrikeThrough(holder.binding.tvMealTitle, isChecked)
             currentMeal.isChecked = isChecked
-            updateTable()
         }
     }
 
     override fun getItemCount() = meals.size
+
+    private fun toggleStrikeThrough(tvMeal: TextView, isChecked: Boolean) {
+        if (isChecked) {
+            tvMeal.paintFlags = tvMeal.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+        } else {
+            tvMeal.paintFlags = tvMeal.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+        }
+    }
+
+    private fun updateTable() {
+        tableLayout.removeAllViews()
+
+        if (meals.isEmpty()) {
+            tableLayout.visibility = View.VISIBLE
+        } else {
+            tableLayout.visibility = View.GONE
+        }
+
+        for (meal in meals) {
+            val mealTextView = TextView(tableLayout.context)
+            mealTextView.text = meal.title
+            tableLayout.addView(mealTextView)
+        }
+    }
 
     fun addMeal(meal: Meal) {
         meals.add(meal)
@@ -84,20 +104,5 @@ class MealAdapter(private val meals: MutableList<Meal>, private var daily: Daily
         }
         notifyDataSetChanged()
         updateTable()
-    }
-
-    private fun updateTable() {
-        tblDailys.findViewById<TextView>(R.id.tvTblKcal).text = "%2d".format(daily.kcal)
-        tblDailys.findViewById<TextView>(R.id.tvTblFat).text = "%.2f".format(daily.fat)
-        tblDailys.findViewById<TextView>(R.id.tvTblPro).text = "%.2f".format(daily.protein)
-        tblDailys.findViewById<TextView>(R.id.tvTblSug).text = "%.2f".format(daily.sugar)
-    }
-
-    private fun toggleStrikeThrough(tvMeal: TextView, isChecked: Boolean) {
-        if (isChecked) {
-            tvMeal.paintFlags = tvMeal.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-        } else {
-            tvMeal.paintFlags = tvMeal.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
-        }
     }
 }

@@ -1,119 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tblDailys"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingStart="8dp"
-    android:paddingEnd="8dp">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    app:layout_constraintTop_toBottomOf="@id/tvDaily"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent">
 
-    <TableLayout
-        android:id="@+id/tblDailys"
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="160dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content">
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/tvKcal1"
+            android:textSize="18sp" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_column="1"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/tvKcal1"
-                android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tvTblKcal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/tvTblKcal"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_column="1"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:text="0"
-                android:textSize="18sp" />
+    </TableRow>
 
-        </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/tvFat"
+            android:textSize="18sp" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_column="1"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/tvFat"
-                android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tvTblFat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="0.0"
+            android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/tvTblFat"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_column="1"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:text="0.0"
-                android:textSize="18sp" />
+    </TableRow>
 
-        </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/tvProtein"
+            android:textSize="18sp" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_column="1"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/tvProtein"
-                android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tvTblPro"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="0.0"
+            android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/tvTblPro"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_column="1"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:text="0.0"
-                android:textSize="18sp" />
+    </TableRow>
 
-        </TableRow>
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/tvSugar"
+            android:textSize="18sp" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_column="1"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/tvSugar"
-                android:textSize="18sp" />
+        <TextView
+            android:id="@+id/tvTblSug"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="0.0"
+            android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/tvTblSug"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_column="1"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:text="0.0"
-                android:textSize="18sp" />
+    </TableRow>
 
-        </TableRow>
-
-    </TableLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</TableLayout>

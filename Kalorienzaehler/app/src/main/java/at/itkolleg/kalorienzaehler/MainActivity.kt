@@ -3,10 +3,11 @@ package at.itkolleg.kalorienzaehler
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.LinearLayout
 import android.widget.TableLayout
-import android.widget.TableRow
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
+import at.itkolleg.kalorienzaehler.Daily
+import at.itkolleg.kalorienzaehler.Meal
 import at.itkolleg.kalorienzaehler.R
 import at.itkolleg.kalorienzaehler.databinding.ActivityMainBinding
 
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var daily: Daily
     private lateinit var tblDailys: TableLayout
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -25,16 +27,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         daily = Daily()
-        tblDailys = findViewById(R.id.tblDailys)
+        tblDailys = binding.includedTableLayout.tblDailys
 
-        mealsList = mutableListOf() // Leere Liste erstellen
+        mealsList = mutableListOf()
 
         mealAdapter = MealAdapter(mealsList, daily, tblDailys)
 
         binding.rvTodoItems.layoutManager = LinearLayoutManager(this)
         binding.rvTodoItems.adapter = mealAdapter
-
-        Log.d("Application", "Application running successful")
 
         binding.btnAdd.setOnClickListener {
             val mealTitle = binding.etMeal.text.toString()
@@ -43,14 +43,10 @@ class MainActivity : AppCompatActivity() {
             val mealPro = binding.etProtein.text.toString().toDoubleOrNull()
             val mealSug = binding.etSugar.text.toString().toDoubleOrNull()
 
-            Log.d("Button clicked", "Button click successful")
-
             if(mealTitle.isNotEmpty() && mealKcal != null && mealFat != null && mealPro != null && mealSug != null) {
                 val meal = Meal(mealTitle, mealKcal, mealFat, mealPro, mealSug)
-                Log.d("MainActivity", "Meal added: $meal")
 
                 mealAdapter.addMeal(meal)
-                mealAdapter.notifyDataSetChanged()
 
                 binding.etMeal.text.clear()
                 binding.etKcal.text.clear()
@@ -67,4 +63,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
